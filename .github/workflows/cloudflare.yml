@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest ]
-        node: [ 14.18.1 ]
+        node: [ 14 ]
 
     steps:
       - uses: actions/setup-node@v1
@@ -39,6 +39,9 @@ jobs:
         run: yarn build
         env:
           NITRO_PRESET: cloudflare
+
+      - name: Check
+        run: node -v
 
       - name: Publish to Cloudflare
         uses: cloudflare/wrangler-action@1.3.0
